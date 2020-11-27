@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            // sortContacts();
+
             int count=selectUsers.size();
             ArrayList<Contacts> removed=new ArrayList<>();
             ArrayList<Contacts> contacts=new ArrayList<>();
@@ -142,36 +142,5 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
-
-    // Check whether user has phone contacts manipulation permission or not.
-    private boolean hasPhoneContactsPermission(String permission)
-    {
-        boolean ret = false;
-
-        // If android sdk version is bigger than 23 the need to check run time permission.
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            // return phone read contacts permission grant status.
-            int hasPermission = ContextCompat.checkSelfPermission(getApplicationContext(), permission);
-            // If permission is granted then return true.
-            if (hasPermission == PackageManager.PERMISSION_GRANTED) {
-                ret = true;
-            }
-        }else
-        {
-            ret = true;
-        }
-        return ret;
-    }
-
-    // ListPhoneContactsActivity use this method to start this activity.
-    public static void start(Context context)
-    {
-        Intent intent = new Intent(context, AddPhoneContactActivity.class);
-        context.startActivity(intent);
-
-    }
-
 
 }
